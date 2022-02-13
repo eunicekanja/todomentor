@@ -1,0 +1,9 @@
+.line{
+    text-decoration: line-through;
+}
+.container{
+    background-image: url('/src/assets/images/bg-desktop-dark.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}

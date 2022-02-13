@@ -6,13 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  isVisible:boolean=false;
-  Num=Math.floor(Math.random()*10);
+ time:any;
   constructor() { 
-    this.Num>5 ? this.isVisible=true : this.isVisible===false;
+    const today=new Date()
+    this.time=today
   }
 
   ngOnInit(): void {
+  
   }
   
 }
