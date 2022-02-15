@@ -1,28 +1,32 @@
 <div class="container">
-    <p class="lead text-center">Good morning!</p>
-    <p class="lead text-center">Here are your tasks for the day, let's get 'em done!</p>
-    <p class="lead text-center">You have no tasks for the day.</p>
-    <p class="lead text-center">Enter your tasks for the day</p>
+    <p class="lead text-center">{{setGreeting()}}</p>
+    <p class="lead text-center" *ngIf="taskArray.length>0">Here are your tasks for the day, let's get 'em done!</p>
+    <p class="lead text-center" *ngIf="taskArray.length===0">You have no tasks for the day.</p>
+    <p class="lead text-center" >Enter your tasks.</p>
 </div>
 <div class="tasks-input-container container">
     <div class="task-item-input d-flex">
-        <input type="text" class="form-control" id="input-task" placeholder="Enter your task">
-    <input type="time" name="time" id="time" placeholder="Select a time">
-    </div>
+    <input type="text" class="form-control" id="input-task" placeholder="Enter your task" (input)="addTodo($event)" >
+    <input type="time" class="ml-1 timepicker"name="time" id="time" placeholder="Select a time" (input)="addTime($event)">
+    <button class="btn btn-primary ml-1" (click)="addTask()">Add</button>
 </div>
-<div class="container tasks-output">
-    <div class="task-items">
-        <div class="task-item d-flex justify-content-between">
-            <div class="item-text d-flex justify-content-between">
-            <p class="primary">Go to school</p>
-            <p class="primary align-self-end">11.00pm</p>
+</div>
+<div class="container tasks-output" >
+    <div class="task-items list-group" >
+        <div class="task-item d-flex justify-content-between flex-column">
+            <div class="item-text justify-content-between list-group-item mt-3"  *ngFor="let task of taskArray; let i=index"  [ngClass]="{'complete':task[2]===true}" >
+                <div class="paras">
+                <p class="primary" ><span class="h6">Task: </span><em>{{task[0]}}</em></p>
+                <p class="primary"><span class="h6">Time: </span><em>{{task[1]}}</em></p>
+                </div><hr>
+                <div class="buttons d-flex justify-content-between">
+                    <button class="btn btn-success" (click)="complete(i)">Complete</button>
+                    <button class="btn btn-danger" (click)="deleteTodo(i)">Delete</button>
+                </div>
             </div>
-            
-            <div class="buttons d-flex justify-content-between">
-            <button class="btn btn-success">Complete</button>
-            <button class="btn btn-danger">Delete</button>
-            </div>
-            
         </div>
     </div>
+</div>
+<div class="container">
+    <p class="lead text-center mt-4" *ngIf="taskArray.length>0">Tasks remaining <span class="badge badge-pill">{{taskArray.length}}</span> </p>
 </div>

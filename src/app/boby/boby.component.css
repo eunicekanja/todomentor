@@ -1,0 +1,7 @@
+.line-through{
+    text-decoration: line-through;
+}
+.complete{
+    background-color: rgb(231, 195, 207);
+    color: black;
+}

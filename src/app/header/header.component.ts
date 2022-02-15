@@ -7,13 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
  time:any;
+ greeting='';
   constructor() { 
-    const today=new Date()
+    const today=new Date();
+    const hour:any=today.getHours()
     this.time=today
   }
 
   ngOnInit(): void {
   
   }
-  
 }
